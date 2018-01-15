@@ -1,6 +1,7 @@
 const express        = require('express');
 const morgan         = require('morgan');
 const expressLayouts = require('express-ejs-layouts');
+const bodyParser = require('body-parser');
 const routes         = require('./config/routes');
 const mongoose       = require('mongoose');
 mongoose.Promise     = require('bluebird');
@@ -14,6 +15,8 @@ app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 
 app.use(expressLayouts);
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static(`${__dirname}/public`));
 if(env === 'development') app.use(morgan('dev'));
 
