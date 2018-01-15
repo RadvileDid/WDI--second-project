@@ -4,7 +4,7 @@ function newRoute(req, res) {
   res.render('sessions/new');
 }
 
-function createRoute(req, res) {
+function createRoute(req, res, next) {
   console.log(req.body);
   User
     .findOne({ email: req.body.email })
@@ -14,13 +14,12 @@ function createRoute(req, res) {
         return res.status(401).render('sessions/new', { message: 'Unrecognised credentials' });
       }
       req.session.userId = user.id;
-      req.flash('info', `Welcome back, ${user.username}!`);
-      res.redirect('/events');
+      req.user = user;
+
+      req.flash('success', `Welcome back, ${user.username}!`);
+      res.redirect('/');
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).end();
-    });
+    .catch(next);
 }
 
 function deleteRoute(req, res) {

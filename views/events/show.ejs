@@ -1,1 +1,39 @@
 <h1>Home page for a single event</h1>
+<div class="topMargin">
+  <div class="container">
+    <div class="row">
+      <div class="rounded img-fluid col-6" style="background-image: url('<%= event.image %>'); height: 450px; width: 350px;"></div>
+      <div class="col-6 eventInfo">
+        <h4><%= event.title %> , <%= event.industry %></h4>
+        <p><%= event.description %></p>
+        <p><%= event.date %></p>
+        <p><%= event.address %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <a href="/events/<%= event.id %>/edit" class="btn btn-outline-success editButton">Edit</a>
+      </div>
+      <div class="col-6">
+        <form method="POST" action="/events/<%= event.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-outline-danger editButton">Delete</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <h2>Comments</h2>
+      <% event.comments.forEach((comment) => { %>
+        <p><%= comment.content %></p>
+        <small><%= comment.createdBy.username %></small>
+
+        <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+          <form method="POST" action="/events/<%= event.id %>/comments/<%= comment.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button>Delete</button>
+          </form>
+        <% } %>
+      <% }) %>
+    </div>
+  </div>
+</div>

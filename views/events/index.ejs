@@ -1,1 +1,13 @@
 <h1>home page for all events</h1>
+
+<div class="container">
+  <div class="row">
+    <% events.forEach((event) => { %>
+      <div class="col-4 imageGrid">
+        <div class="imageSizing rounded img-fluid" style="background-image: url(<%= event.image %>); height: 350px; width: 350px;"></div>
+        <a href="/events/<%= event.id %>"><h3><%= event.title %></h3></a>
+        <h4><%= event.date %></h4>
+      </div>
+    <% }); %>
+  </div>
+</div>

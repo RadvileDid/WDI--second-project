@@ -34,6 +34,9 @@
       </ul>
     </div>
   </nav>
+  <% for (const type in messages) { %>
+    <p class="alert alert-<%= type %>"><%= messages[type] %></p>
+  <% } %>
   <%- body %>
 </body>
 </html>
