@@ -44,6 +44,9 @@ router.route('/events/:id')
   .put(events.update)
   .delete(events.delete);
 
+router.route('/events/:id/attendants')
+  .put(events.addAttendant);
+
 router.route('/events/:id/comments')
   .post(events.createComment);
 

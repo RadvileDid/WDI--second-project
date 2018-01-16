@@ -35,9 +35,9 @@ function eventsShow(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then((event) => {
-      if (!event) return res.status(404).send('Sorry, not found');
-
-      res.render('events/show', {event});
+      // if (!event) return res.status(404).send('Sorry, not found');
+      //
+      return res.render('events/show', { event });
     })
     .catch(next);
 }
@@ -128,6 +128,24 @@ function deleteCommentRoute(req, res, next) {
     .catch(next);
 }
 
+function addAttendantsRoute(req, res, next) {
+
+  Event
+    .findById(req.params.id)
+    .exec()
+    .then((event) => {
+      if(!event) return res.notFound();
+      event.attendants.push(req.body.attendant._id);
+      return event.save();
+    })
+
+    .then((event) => {
+      console.log(event);
+      res.redirect(`/events/${event.id}`);
+    })
+    .catch(next);
+}
+
 module.exports = {
   index: eventsIndex,
   new: eventsNew,
@@ -138,5 +156,6 @@ module.exports = {
   edit: eventsEdit,
   secret: secretRoute,
   createComment: createCommentRoute,
-  deleteComment: deleteCommentRoute
+  deleteComment: deleteCommentRoute,
+  addAttendant: addAttendantsRoute
 };

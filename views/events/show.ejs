@@ -6,20 +6,34 @@
       <div class="col-6 eventInfo">
         <h4><%= event.title %> , <%= event.industry %></h4>
         <p><%= event.description %></p>
-        <p><%= event.date %></p>
         <p><%= event.address %></p>
       </div>
     </div>
     <div class="row">
       <div class="col-6">
-        <a href="/events/<%= event.id %>/edit" class="btn btn-outline-success editButton">Edit</a>
-      </div>
-      <div class="col-6">
+        <div class="attendants">
+        <% if(locals.isLoggedIn) { %>
+          <form method="POST" action="/events/<%= event.id %>/attendants">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="attendant" value="<%= locals.user %>">
+            <button class="button">Count me in!</button>
+          </form>
+        <% } %>
+        <% if(event.attendants.length > 0) { %>
+        <h4>Coming: <%= event.attendants.length %></h4>
+        <% } %>
+        </div>
+        <% if(locals.isLoggedIn && event.createdBy.toString() === currentUser._id.toString()) {%>
+        <div class="col-6">
+          <a href="/events/<%= event.id %>/edit" class="btn btn-outline-success editButton">Edit</a>
+        </div>
         <form method="POST" action="/events/<%= event.id %>">
           <input type="hidden" name="_method" value="DELETE">
           <button class="btn btn-outline-danger editButton">Delete</button>
         </form>
+        <% } %>
       </div>
+    </div>
     </div>
     <div class="row">
       <h2>Comments</h2>
@@ -27,13 +41,24 @@
         <p><%= comment.content %></p>
         <small><%= comment.createdBy.username %></small>
 
-        <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+        <% if(locals.isLoggedIn && comment.createdBy.toString() === currentUser._id.toString()) { %>
           <form method="POST" action="/events/<%= event.id %>/comments/<%= comment.id %>">
             <input type="hidden" name="_method" value="DELETE">
             <button>Delete</button>
           </form>
         <% } %>
       <% }) %>
+    </div>
+    <div class="row">
+      <% if(locals.isLoggedIn) { %>
+        <section>
+          <h4>Leave a comment</h4>
+          <form method="POST" action="/events/<%= event.id %>/comments">
+            <textarea name="content" id="content" placeholder="Comment"></textarea>
+            <button class="button">Leave a comment</button>
+          </form>
+        </section>
+      <% } %>
     </div>
   </div>
 </div>

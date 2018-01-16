@@ -19,11 +19,13 @@ const eventSchema = new mongoose.Schema({
   industry: { type: String},
   image: { type: String },
   createdBy: {type: mongoose.Schema.ObjectId, ref: 'User', required: true},
-  comments: [ commentSchema ]
+  comments: [ commentSchema ],
+  attendants: [ { type: mongoose.Schema.ObjectId, ref: 'User'} ]
 });
 
-eventSchema.methods.belongsTo = function belongsTo(user) {
-  return this.createdBy.id === user.id;
+eventSchema.methods.belongsTo = function eventBelongsTo(user) {
+  return this.createdBy.id === user._id;
 };
+
 
 module.exports = mongoose.model('Event', eventSchema);

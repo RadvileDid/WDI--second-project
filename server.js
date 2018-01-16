@@ -48,8 +48,8 @@ app.use((req, res, next) => {
         });
       }
 
-      res.locals.user = user;
-      res.locals.isLoggedIn = true;
+      res.locals.currentUser = user;
+      res.locals.isLoggedIn  = true;
 
       next();
     });

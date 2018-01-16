@@ -1,4 +1,38 @@
-// import scss partials here
+
 body {
   font-family: 'Helvetica', sans-serif;
+  background-color: #F7F7F7;
+}
+
+.topMargin {
+  margin-top: 20px;
+}
+
+
+.imageSizing{
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  .row {
+    .col-4{
+      padding: 0;
+    }
+  }
+}
+
+.cardContainer{
+  background-color: white;
+  margin: 10px;
+}
+
+.cardContent{
+  padding: 20px;
+}
+
+a h5{
+  text-decoration: none;
+  text-transform: none;
+  color: black;
 }

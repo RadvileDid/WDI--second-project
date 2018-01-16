@@ -55,7 +55,8 @@ gulp.task('serve', sequence('clean', ['es6', 'sass']), () => {
     proxy: 'http://localhost:3000',
     port: 8000,
     files: ['public/**/*.*', 'views/**/*.*'],
-    reloadDelay: 500
+    reloadDelay: 500,
+    notify: false
   });
 
   return nodemon().on('start', () => browserSync.reload());
