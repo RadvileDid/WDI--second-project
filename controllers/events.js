@@ -33,6 +33,7 @@ function eventsCreate(req, res, next) {
 function eventsShow(req, res, next) {
   Event
     .findById(req.params.id)
+    .populate('attendants')
     .exec()
     .then((event) => {
       // if (!event) return res.status(404).send('Sorry, not found');
@@ -129,13 +130,14 @@ function deleteCommentRoute(req, res, next) {
 }
 
 function addAttendantsRoute(req, res, next) {
+  req.body.attendant = req.user;
 
   Event
     .findById(req.params.id)
     .exec()
     .then((event) => {
       if(!event) return res.notFound();
-      event.attendants.push(req.body.attendant._id);
+      event.attendants.push(req.body.attendant);
       return event.save();
     })
 

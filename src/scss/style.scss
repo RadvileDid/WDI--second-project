@@ -16,7 +16,7 @@ body {
 
 .container {
   .row {
-    .col-4{
+    .col-5{
       padding: 0;
     }
   }
@@ -24,15 +24,20 @@ body {
 
 .cardContainer{
   background-color: white;
-  margin: 10px;
+  margin: 10px 10px 20px 10px;
 }
 
 .cardContent{
-  padding: 20px;
+  padding: 20px 0;
+  text-align: center;
 }
 
 a h5{
   text-decoration: none;
   text-transform: none;
   color: black;
+}
+
+.box-shadow-all {
+  box-shadow: 0 0 5px #333;
 }
