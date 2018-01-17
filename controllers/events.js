@@ -2,7 +2,35 @@ const Event = require('../models/event');
 const moment = require('moment');
 // const User = require('../models/user');
 
+function indexFilter(req, res, next) {
+  const dictionary = {
+    scifi: 'Sci-Fi & Games',
+    health: 'Health & Wellness',
+    sports: 'Sports & Fitness',
+    photo: 'Photography',
+    food: 'Food & Drink',
+    music: 'Music',
+    film: 'Film',
+    dance: 'Dance',
+    books: 'Books',
+    pets: 'Pets',
+    arts: 'Arts & Crafts',
+    fashion: 'Fashion & Beauty',
+    career: 'Career & Learning',
+    tech: 'Tech'
+  };
+
+  Event
+    .find({'industry': dictionary[req.params.filter]})
+    .exec()
+    .then(events => {
+      res.render('events/index', {events});
+    })
+    .catch(next);
+}
+
 function eventsIndex(req, res) {
+
   Event
     .find()
     .exec()
@@ -16,6 +44,7 @@ function eventsNew(req, res) {
 }
 
 function eventsCreate(req, res, next) {
+
   req.body.createdBy = req.user;
 
   Event
@@ -161,5 +190,6 @@ module.exports = {
   secret: secretRoute,
   createComment: createCommentRoute,
   deleteComment: deleteCommentRoute,
-  addAttendant: addAttendantsRoute
+  addAttendant: addAttendantsRoute,
+  indexFilter: indexFilter
 };

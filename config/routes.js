@@ -21,10 +21,14 @@ router.route('/login')
 router.route('/logout')
   .get(sessions.delete);
 
-//EVENT
+//EVENTS
 //INDEX
 router.route('/events')
   .get(events.index);
+
+router.route('/events/filter/:filter')
+  .get(events.indexFilter);
+
 
 // NEW
 router.route('/events/new')
