@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const routes         = require('./config/routes');
 const mongoose       = require('mongoose');
 const methodOverride = require('method-override');
-const User = require('./models/user');
 const flash =  require('express-flash');
 mongoose.Promise     = require('bluebird');
 const { port, env, dbURI } = require('./config/environment');
@@ -33,28 +32,6 @@ app.use(session({
 
 app.use(flash());
 app.use(customResponses);
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use((req, res, next) => {
-  if (!req.session.userId) return next();
-
-  User
-    .findById(req.session.userId)
-    .exec()
-    .then((user) => {
-      if(!user) {
-        return req.session.regenerate(() => {
-          res.redirect('/');
-        });
-      }
-
-      res.locals.currentUser = user;
-      res.locals.isLoggedIn  = true;
-
-      next();
-    });
-});
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(methodOverride(function (req) {

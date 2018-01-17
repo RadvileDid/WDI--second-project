@@ -1,4 +1,5 @@
 const Event = require('../models/event');
+const moment = require('moment');
 // const User = require('../models/user');
 
 function eventsIndex(req, res) {
@@ -38,7 +39,7 @@ function eventsShow(req, res, next) {
     .then((event) => {
       if (!event) return res.status(404).send('Sorry, not found');
 
-      return res.render('events/show', { event });
+      return res.render('events/show', { event, moment });
     })
     .catch(next);
 }

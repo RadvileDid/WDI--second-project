@@ -6,7 +6,7 @@
           <div class="img-fluid col-6 imageSizing" style="background-image: url('<%= event.image %>'); height: 450px; width: 350px;"></div>
           <div class="col-6 eventInfo">
             <h4><%= event.title %> , <%= event.industry %></h4>
-            <h6><%= event.date %></h6>
+            <p small><%= moment(event.date).format('MMMM Do, YYYY') %></p>
             <div class="adminButtons">
               <% if(locals.isLoggedIn && event.createdBy._id.toString() === currentUser._id.toString()) { %>
                 <div class="col-6">
@@ -19,7 +19,7 @@
               <% } %>
             </div>
             <p><%= event.description %></p>
-            <p><%= event.address %></p>
+            <p>Address: <%= event.address %></p>
             <div class="attendants">
               <div class="testLeft">
               <% if(locals.isLoggedIn && event.attendants.every(element => { %>
@@ -44,7 +44,7 @@
           <h2 class="col-12 topMargin">Comments</h2>
             <% event.comments.forEach((comment) => { %>
               <div class="allComments col-12">
-                <p class="col-12"><%= comment.createdBy.username %> <%= comment.timestamps %></p>
+                <p class="col-12 text-muted"><%= comment.createdBy.username %>: <%= moment(comment.createdAt).format('MMMM Do YYYY, h:mm:ss a') %></p>
                 <div class="underlineComment"></div>
                 <p class="col-12"><%= comment.content %></p>
                   <% if(locals.isLoggedIn && comment.createdBy._id.toString() === currentUser._id.toString()) { %>

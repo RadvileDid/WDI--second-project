@@ -1,40 +1,41 @@
 <div class="container formMargin formWidth">
+  <h1>Update <%= event.title %></h1>
   <form method="POST" action="/events/<%= event.id %>">
+    <input type="hidden" name="_method" value="PUT">
     <div class="form-group">
       <input type="text" class="form-control" value="<%= event.title %>" name="title" id="title" required>
     </div>
     <div class="form-group">
       <input type=“text” class="form-control" value="<%= event.address %>" name="address" id="address"  required>
     </div>
-    <%# <div>
-    <label for="date">Date</label>
-    <input type="date" name="date" id="date" required>
-  </div>%>
-  <div class="form-group">
-    <input type="text" class="form-control" value="<%= event.description %>" name="description" id="description" required>
-  </div>
-  <div class="form-group">
-    <select class="form-control" id="industry" value="<%= event.industry %>"name="industry">
-      <option>Choose industry</option>
-      <option>Health & Wellness</option>
-      <option>Sports & Fitness</option>
-      <option>Photography</option>
-      <option>Food & Drink</option>
-      <option>Music</option>
-      <option>Film</option>
-      <option>Dance</option>
-      <option>Sci-Fi & Games</option>
-      <option>Books</option>
-      <option>Pets</option>
-      <option>Arts & Crafts</option>
-      <option>Fashion & Beauty</option>
-      <option>Career and Learning</option>
-      <option>Tech</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <input type="text" class="form-control" value="<%= event.image %>" name="image" id="image" required>
-  </div>
-  <button class="button btn btn-primary btn-block">Add new event</button>
-</form>
+    <div class="form-group">
+      <input type="date" class="form-control" name="date" id="date" required>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" value="<%= event.description %>" name="description" id="description" required>
+    </div>
+    <div class="form-group">
+      <select class="form-control" id="industry" value="<%= event.industry %>"name="industry">
+        <option>Choose industry</option>
+        <option>Health & Wellness</option>
+        <option>Sports & Fitness</option>
+        <option>Photography</option>
+        <option>Food & Drink</option>
+        <option>Music</option>
+        <option>Film</option>
+        <option>Dance</option>
+        <option>Sci-Fi & Games</option>
+        <option>Books</option>
+        <option>Pets</option>
+        <option>Arts & Crafts</option>
+        <option>Fashion & Beauty</option>
+        <option>Career and Learning</option>
+        <option>Tech</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" value="<%= event.image %>" name="image" id="image" required>
+    </div>
+    <button class="addButton btn btn-primary btn-block" type="submit">Update</button>
+  </form>
 </div>

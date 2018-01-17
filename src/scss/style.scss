@@ -94,13 +94,17 @@ nav.stroke ul li a:hover:after {
 }
 
 .shadow {
-  -webkit-box-shadow: 0 8px 6px -8px black;
-   -moz-box-shadow: 0 8px 6px -8px black;
-        box-shadow: 0 8px 6px -8px black;
+  -webkit-box-shadow: 0 8px 6px -9px black;
+   -moz-box-shadow: 0 8px 6px -9px black;
+        box-shadow: 0 8px 6px -9px black;
 }
 
 .form-group, .alert{
   text-align: center;
+}
+
+.alert{
+  margin: 0;
 }
 
 .formWidth{
@@ -168,7 +172,7 @@ nav.stroke ul li a:hover:after {
 
 .underlineComment{
   height: 1px;
-  width: 30%;
+  width: 70%;
   background-color: lightGrey;
   margin: 0 0 7px 7px;
   border-radius: 10px;
