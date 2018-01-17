@@ -161,8 +161,15 @@ nav.stroke ul li a:hover:after {
 .underlineTitle{
   height: 1px;
   width: 60%;
-  border-bottom: 1px solid lightGrey;
-  margin-left: 80px;
-  margin-bottom: 10px;
+  background-color: lightGrey;
+  margin: 0 auto 7px;
+  border-radius: 10px;
+}
 
+.underlineComment{
+  height: 1px;
+  width: 30%;
+  background-color: lightGrey;
+  margin: 0 0 7px 7px;
+  border-radius: 10px;
 }

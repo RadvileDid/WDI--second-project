@@ -6,6 +6,7 @@
           <div class="img-fluid col-6 imageSizing" style="background-image: url('<%= event.image %>'); height: 450px; width: 350px;"></div>
           <div class="col-6 eventInfo">
             <h4><%= event.title %> , <%= event.industry %></h4>
+            <h6><%= event.date %></h6>
             <div class="adminButtons">
               <% if(locals.isLoggedIn && event.createdBy._id.toString() === currentUser._id.toString()) { %>
                 <div class="col-6">
@@ -43,7 +44,8 @@
           <h2 class="col-12 topMargin">Comments</h2>
             <% event.comments.forEach((comment) => { %>
               <div class="allComments col-12">
-                <p class="col-12 underline"><%= comment.createdBy.username %> <%= comment.timestamps %></p>
+                <p class="col-12"><%= comment.createdBy.username %> <%= comment.timestamps %></p>
+                <div class="underlineComment"></div>
                 <p class="col-12"><%= comment.content %></p>
                   <% if(locals.isLoggedIn && comment.createdBy._id.toString() === currentUser._id.toString()) { %>
                     <form method="POST" action="/events/<%= event.id %>/comments/<%= comment.id %>">

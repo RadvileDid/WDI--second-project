@@ -13,7 +13,7 @@ commentSchema.methods.belongsTo = function commentBelongsTo(user) {
 
 const eventSchema = new mongoose.Schema({
   title: { type: String},
-  // date: { type: Date},
+  date: { type: Date},
   description: { type: String},
   address: { type: String},
   industry: { type: String},
