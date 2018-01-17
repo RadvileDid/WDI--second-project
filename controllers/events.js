@@ -33,11 +33,11 @@ function eventsCreate(req, res, next) {
 function eventsShow(req, res, next) {
   Event
     .findById(req.params.id)
-    .populate('attendants')
+    .populate('attendants createdBy comments.createdBy comments.timestamps')
     .exec()
     .then((event) => {
-      // if (!event) return res.status(404).send('Sorry, not found');
-      //
+      if (!event) return res.status(404).send('Sorry, not found');
+
       return res.render('events/show', { event });
     })
     .catch(next);
@@ -103,7 +103,6 @@ function createCommentRoute(req, res, next) {
       event.comments.push(req.body);
       return event.save();
     })
-
     .then((event) => {
       res.redirect(`/events/${event.id}`);
     })
@@ -130,17 +129,19 @@ function deleteCommentRoute(req, res, next) {
 }
 
 function addAttendantsRoute(req, res, next) {
-  req.body.attendant = req.user;
-
   Event
     .findById(req.params.id)
     .exec()
     .then((event) => {
       if(!event) return res.notFound();
-      event.attendants.push(req.body.attendant);
+
+
+      if (event.attendants.indexOf(req.body.attendant) === -1) {
+        event.attendants.push(req.body.attendant);
+      }
+
       return event.save();
     })
-
     .then((event) => {
       console.log(event);
       res.redirect(`/events/${event.id}`);

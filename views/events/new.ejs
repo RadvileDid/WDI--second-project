@@ -1,25 +1,21 @@
-<h1>add a new event!</h1>
-
-<form method="POST" action="/events">
-  <div>
-    <label for="title">Title</label>
-    <input type="text" name="title" id="title" required>
-  </div>
-  <div>
-    <label for="address">Address</label>
-    <input id=“pac-input” class=“controls” type=“text” name=“address” required>
-  </div>
-  <%# <div>
+<div class="container formMargin formWidth">
+  <form method="POST" action="/events">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Title..." name="title" id="title" required>
+    </div>
+    <div class="form-group">
+      <input type=“text” class="form-control" placeholder="Address..." name="address" id="address"  required>
+    </div>
+    <%# <div>
     <label for="date">Date</label>
     <input type="date" name="date" id="date" required>
   </div>%>
-  <div>
-    <label for="description">Description</label>
-    <input type="text" name="description" id="description" required>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Description..." name="description" id="description" required>
   </div>
-  <div>
-    <label for="industry">Industry</label>
+  <div class="form-group">
     <select class="form-control" id="industry" name="industry">
+      <option>Choose industry</option>
       <option>Health & Wellness</option>
       <option>Sports & Fitness</option>
       <option>Photography</option>
@@ -36,9 +32,9 @@
       <option>Tech</option>
     </select>
   </div>
-  <div>
-    <label for="image">image</label>
-    <input type="text" name="image" id="image" required>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Image URL..." name="image" id="image" required>
   </div>
-  <button class="button">Add new event</button>
+  <button class="button btn btn-primary btn-block">Add new event</button>
 </form>
+</div>

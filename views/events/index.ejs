@@ -2,12 +2,15 @@
   <div class="container">
     <div class="row">
       <% events.forEach((event) => { %>
-        <div class="col-5 imageGrid cardContainer box-shadow-all">
-          <div class="imageSizing img-fluid" style="background-image: url(<%= event.image %>); height: 300px; width: 100%;"></div>
-          <div class="cardContent">
-            <a href="/events/<%= event.id %>"><h5><%= event.title %></h3></a>
-            <h6><%= event.industry %></h3>
+        <div class="col-5 imageGrid cardContainer shadow">
+          <a href="/events/<%= event.id %>">
+            <div class="imageSizing img-fluid" style="background-image: url(<%= event.image %>); height: 300px; width: 100%;"></div>
+            <div class="cardContent">
+              <h5><%= event.title %></h5>
+              <div class="underlineTitle"></div>
+              <h6><%= event.industry %></h6>
             </div>
+          </a>
         </div>
         <% }); %>
       </div>
