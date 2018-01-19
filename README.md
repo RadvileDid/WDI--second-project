@@ -17,30 +17,19 @@ screenshots from wireframes
 list libraries, packages used
 
 ###Dependencies used
-Bcrypt 1.0.3
-Bluebird 3.4.7
-Body-parser 1.18.2
-Ejs 2.5.6
-Express-ejs-layouts 2.2.0
-Express-flash 0.0.2
-Express-session 1.15.6
-Method-override 2.3.10
-Mongoose 5.0.0-rc2
-Morgan 1.8.1
-Babel-core 6.26.0,
-Babel-preset-env 1.6.1,
-Browser-sync: 2.23.5,
-Gulp 3.9.1,
-Gulp-babel 7.0.0,
-Gulp-clean 0.4.0,
-Gulp-clean-css 3.9.2,
-Gulp-nodemon 2.2.1,
-Gulp-notify 3.1.0,
-Gulp-plumber 1.2.0,
-Gulp-sass 3.1.0,
-Gulp-sourcemaps 2.6.3,
-Gulp-uglify 3.0.0,
-Run-sequence 2.2.1,
+* bcrypt": "^1.0.3",
+* bluebird": "^3.4.7",
+* body-parser": "^1.18.2",
+* ejs": "^2.5.6",
+* express": "^4.14.1",
+* express-ejs-layouts": "^2.2.0",
+* express-flash": "^0.0.2",
+* express-session": "^1.15.6",
+* flash": "^1.1.0",
+* method-override": "^2.3.10",
+* moment": "^2.20.1",
+* mongoose": "^5.0.0-rc2",
+* morgan": "^1.8.1"
 
 ###Secondary tools
 Balsamiq
