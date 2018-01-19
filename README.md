@@ -10,6 +10,7 @@ To ensure I will meet all the requirements, I came up with the idea for a casual
 
 ### My app:
 
+* Is fully **responsive**
 * Has **2 models** and there is embdedded relationship.
 * It has **authentication** - with hashed passwords & an authorisation flow.
 * Have complete **RESTful routes** with all CRUD actions.

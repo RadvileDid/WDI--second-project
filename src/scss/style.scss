@@ -303,3 +303,10 @@ nav.stroke ul li a:hover:after {
   margin: 0 auto 7px;
   border-radius: 10px;
 }
+
+@media (max-width: 640px) {
+  .homepageText {
+    font-size: 40px;
+    padding-top: 150px;
+  }
+}
