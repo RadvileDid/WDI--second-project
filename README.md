@@ -18,7 +18,7 @@ To ensure I will meet all the requirements, I came up with the idea for a casual
 * Includes data from a **Google Autocomplete API**
 
 ###Overview:
-An events website where you can register, find/view, filter and add events or comments (only if logged in).
+An events website where you can register/login and see events. If the user is logged in, he/she can add events and add comments on any event they see. Only the user who added event or comment can delete it but would need to be logged in to do so.
 
 ##Installation instructions
 #####Run locally
