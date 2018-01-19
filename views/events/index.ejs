@@ -1,38 +1,37 @@
-<div class="topMargin">
-  <div class="container">
-    <div class="myBtnContainer">
-        <a href="/events" class="btn nonActive btn-sm btnFilter" >Show all</a>
-        <a href="/events/filter/health" class="btn nonActive btn-sm btnFilter" >Health & Wellness</a>
-        <a href="/events/filter/sports" class="btn nonActive btn-sm btnFilter" >Sport & Fitness</a>
-        <a href="/events/filter/photo" class="btn nonActive btn-sm btnFilter" >Photography</a>
-        <a href="/events/filter/food" class="btn nonActive btn-sm btnFilter" >Food & Drink</a>
-        <a href="/events/filter/music" class="btn nonActive btn-sm btnFilter" >Music</a>
-        <a href="/events/filter/film" class="btn nonActive btn-sm btnFilter" >Film</a>
-        <a href="/events/filter/dance" class="btn nonActive btn-sm btnFilter" >Dance</a>
-        <a href="/events/filter/scifi" class="btn nonActive btn-sm btnFilter" >Sci-Fi & Games</a>
-        <a href="/events/filter/books" class="btn nonActive btn-sm btnFilter" >Books</a>
-        <a href="/events/filter/pets" class="btn nonActive btn-sm btnFilter" >Pets</a>
-        <a href="/events/filter/tech" class="btn nonActive btn-sm btnFilter" >Tech</a>
-        <a href="/events/filter/arts" class="btn nonActive btn-sm btnFilter" >Arts & Crafts</a>
-        <a href="/events/filter/fashion" class="btn nonActive btn-sm btnFilter" >Fashion & Beauty</a>
-        <a href="/events/filter/career" class="btn nonActive btn-sm btnFilter" >Career & Learning</a>
-        <a href="/events/filter/other" class="btn nonActive btn-sm btnFilter" >Other</a>
-    </div>
-    <div class="row">
-      <% events.forEach((event) => { %>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="imageGrid cardContainer shadow">
-            <a href="/events/<%= event.id %>">
-              <div class="imageSizing img-fluid" style="background-image: url(<%= event.image %>); height: 300px; width: 100%;"></div>
-              <div class="cardContent">
-                <h5><%= event.title %></h5>
-                <div class="underlineTitle"></div>
-                <h6><%= event.industry %></h6>
-              </div>
-            </a>
-          </div>
-        </div>
-        <% }); %>
+
+<div class="container">
+  <div class="myBtnContainer">
+    <a href="/events" class="btn nonActive btn-sm btnFilter" >Show all</a>
+    <a href="/events/filter/health" class="btn nonActive btn-sm btnFilter" >Health & Wellness</a>
+    <a href="/events/filter/sports" class="btn nonActive btn-sm btnFilter" >Sport & Fitness</a>
+    <a href="/events/filter/photo" class="btn nonActive btn-sm btnFilter" >Photography</a>
+    <a href="/events/filter/food" class="btn nonActive btn-sm btnFilter" >Food & Drink</a>
+    <a href="/events/filter/music" class="btn nonActive btn-sm btnFilter" >Music</a>
+    <a href="/events/filter/film" class="btn nonActive btn-sm btnFilter" >Film</a>
+    <a href="/events/filter/dance" class="btn nonActive btn-sm btnFilter" >Dance</a>
+    <a href="/events/filter/scifi" class="btn nonActive btn-sm btnFilter" >Sci-Fi & Games</a>
+    <a href="/events/filter/books" class="btn nonActive btn-sm btnFilter" >Books</a>
+    <a href="/events/filter/pets" class="btn nonActive btn-sm btnFilter" >Pets</a>
+    <a href="/events/filter/tech" class="btn nonActive btn-sm btnFilter" >Tech</a>
+    <a href="/events/filter/arts" class="btn nonActive btn-sm btnFilter" >Arts & Crafts</a>
+    <a href="/events/filter/fashion" class="btn nonActive btn-sm btnFilter" >Fashion & Beauty</a>
+    <a href="/events/filter/career" class="btn nonActive btn-sm btnFilter" >Career & Learning</a>
+    <a href="/events/filter/other" class="btn nonActive btn-sm btnFilter" >Other</a>
+  </div>
+  <div class="row">
+    <% events.forEach((event) => { %>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="imageGrid cardContainer shadow">
+      <a href="/events/<%= event.id %>">
+      <div class="imageSizing img-fluid" style="background-image: url(<%= event.image %>); height: 300px; width: 100%;"></div>
+      <div class="cardContent">
+      <h5><%= event.title %></h5>
+      <div class="underlineTitle"></div>
+      <h6><%= event.industry %></h6>
       </div>
+      </a>
+      </div>
+      </div>
+      <% }); %>
     </div>
-</div>
+  </div>
