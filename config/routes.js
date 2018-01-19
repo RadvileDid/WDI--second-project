@@ -2,11 +2,10 @@ const router = require('express').Router();
 const events = require('../controllers/events');
 const registrations = require('../controllers/registrations');
 const sessions = require('../controllers/sessions');
-// const secureRoute = require('../lib/secureRoute');
 
 router.get('/', (req, res) => res.render('statics/index'));
 
-//user
+//USER________________________________
 //register
 router.route('/register')
   .get(registrations.new)
@@ -21,7 +20,7 @@ router.route('/login')
 router.route('/logout')
   .get(sessions.delete);
 
-//EVENTS
+//EVENTS________________________________
 //INDEX
 router.route('/events')
   .get(events.index);
@@ -42,7 +41,7 @@ router.route('/events')
 router.route('/events/:id/edit')
   .get(events.edit);
 
-//update, delete and show
+//UPDATE, DELETE and SHOW
 router.route('/events/:id')
   .get(events.show)
   .put(events.update)

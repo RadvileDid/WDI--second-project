@@ -3,74 +3,104 @@
     <div class="topMargin">
       <div class="container">
         <div class="row">
-          <div class="img-fluid col-6 imageSizing" style="background-image: url('<%= event.image %>'); height: 450px; width: 350px;"></div>
-          <div class="col-6 eventInfo">
-            <h4><%= event.title %> , <%= event.industry %></h4>
-            <p small><%= moment(event.date).format('MMMM Do, YYYY') %></p>
-            <div class="adminButtons">
+          <div class="img-fluid col-12 imageSizing imgShadow" style="background-image: url('<%= event.image %>'); height: 450px; width: 350px;"></div>
+        </div>
+        <div class="row topMargin">
+          <div class="col-lg-6 col-md-12 eventInfo topMargin">
+            <div class="row">
+              <div class="col-10">
+                <h2> <%= event.title %></h2>
+              </div>
+              <div class="col-2 row">
               <% if(locals.isLoggedIn && event.createdBy._id.toString() === currentUser._id.toString()) { %>
                 <div class="col-6">
-                  <a href="/events/<%= event.id %>/edit" class="btn btn-outline-success editButton btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                  <a href="/events/<%= event.id %>/edit" class="btn btn-sm btn-outline-success editButton"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                 </div>
-                <form method="POST" action="/events/<%= event.id %>">
+                <form method="POST" action="/events/<%= event.id %>" class="col-6">
                   <input type="hidden" name="_method" value="DELETE">
-                  <button class="btn btn-outline-danger editButton btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                </form>
-              <% } %>
-            </div>
-            <p><%= event.description %></p>
-            <p>Address: <%= event.address %></p>
-            <div class="attendants">
-              <div class="testLeft">
-              <% if(locals.isLoggedIn && event.attendants.every(element => { %>
-                <% return element._id.toString() != locals.user._id.toString() %>
-              <% })) { %>
-                <form method="POST" action="/events/<%= event.id %>/attendants">
-                  <input type="hidden" name="_method" value="PUT">
-                  <input type="hidden" name="attendant" value="<%= locals.user._id %>">
-                  <button class="btn btn-outline-success btn-sm">Count me in! <i class="fa fa-user-plus" aria-hidden="true"></i></button>
+                  <button class="btn-sm btn btn-outline-danger editButton"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </form>
               <% } %>
               </div>
-              <div class="testRight">
-              <% if(event.attendants.length > 0 ) { %>
-                <h4><%= event.attendants.length %> <i class="fa fa-users" aria-hidden="true"></i></h4>
-              <% } %>
+            </div>
+            <p class="text-muted small"><%= moment(event.date).format('MMMM Do, YYYY') %></p>
+            <p><%= event.description %></p>
+            <p>Address: <%= event.address %></p>
+            <div class="attendants row">
+              <div class="col-6">
+                <div class="row float-right">
+                <% if(locals.isLoggedIn && event.attendants.every(element => { %>
+                  <% return element._id.toString() != locals.user._id.toString() %>
+                  <% })) { %>
+                    <form method="POST" action="/events/<%= event.id %>/attendants" class="col-lg-6 col-md-12">
+                      <input type="hidden" name="_method" value="PUT">
+                      <input type="hidden" name="attendant" value="<%= locals.user._id %>">
+                      <button class="btn btn-success btn-sm">Count me in! <i class="fa fa-user-plus" aria-hidden="true"></i></button>
+                    </form>
+                    <% } else if(!locals.isLoggedIn){ %>
+                      <a href="/login" class="btn btn-sm btn-danger commentLoginButton">Login to RSVP</a>
+                      <% } %>
+                </div>
+              </div>
+              <div class="col-6">
+                <p>Coming: <%= event.attendants.length %> <i class="fa fa-users" aria-hidden="true"></i></p>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row commentsContainer">
-          <h2 class="col-12 topMargin">Comments</h2>
+
+
+
+          <div class="col-lg-6 col-md-12 commentInfo topMargin">
+            <h2 class="col-12">Comments</h2>
             <% event.comments.forEach((comment) => { %>
-              <div class="allComments col-12">
-                <p class="col-12 text-muted"><%= comment.createdBy.username %>: <%= moment(comment.createdAt).format('MMMM Do YYYY, h:mm:ss a') %></p>
-                <div class="underlineComment"></div>
-                <p class="col-12"><%= comment.content %></p>
-                  <% if(locals.isLoggedIn && comment.createdBy._id.toString() === currentUser._id.toString()) { %>
-                    <form method="POST" action="/events/<%= event.id %>/comments/<%= comment.id %>">
-                      <input type="hidden" name="_method" value="DELETE">
-                      <button class="btn btn-outline-danger editButton btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                    </form>
-                  <% } %>
-              </div>
-            <% }) %>
-            <div class="row">
-              <% if(locals.isLoggedIn) { %>
-                <section>
-                  <h4>Leave a comment</h4>
-                  <div class="container">
+              <div class="allComments imgShadow">
+                <div class="row">
+                  <div class="col-10 commentDetails">
                     <div class="row">
-                      <form method="POST" action="/events/<%= event.id %>/comments">
-                        <textarea name="content" id="content" placeholder="Leave a comment..." class="col-6"></textarea>
-                        <button class="btn btn-outline-success btn-sm col-6">Comment  <i class="fa fa-check-square" aria-hidden="true"></i></button>
-                      </form>
+                      <p class="col-12 font-weight-bold commentMargin"><%= comment.createdBy.username %></p>
+                    </div>
+                    <div class="row">
+                      <p class="col-12 text-muted small commentMargin"><%= moment(comment.createdAt).format('MMMM Do YYYY, h:mm:ss a') %></p>
                     </div>
                   </div>
+                  <div class="col-2 commentDelete">
+                    <% if(locals.isLoggedIn && comment.createdBy._id.toString() === currentUser._id.toString()) { %>
+                      <form method="POST" action="/events/<%= event.id %>/comments/<%= comment.id %>">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-outline-danger editButton btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                      </form>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="underlineComment col-12"></div>
+                <p class="commentText"><%= comment.content %></p>
+              </div>
+            <% }) %>
+            <div class"col-12">
+              <% if(locals.isLoggedIn) { %>
+                <section>
+                  <form method="POST" action="/events/<%= event.id %>/comments" >
+                    <textarea name="content" id="content" placeholder=" Leave your comment..." class="allComments imgShadow commentTextArea col-12"></textarea>
+                    <div class="row">
+                      <button class="button btn btn-sm btn-success commentButton">Comment <i class="fa fa-commenting-o" aria-hidden="true"></i></button>
+                    </div>
+                  </form>
                 </section>
+              <% } else if(!locals.isLoggedIn) {%>
+                  <div class="commentTextArea allComments imgShadow">
+                    <div class="text-center">
+                        <div class="col-12">Please login to leave a comment!</div>
+                        <a href="/login" class="btn btn-sm logginButtonPadding btn-danger">Login</a>
+                    </div>
+                  </div>
               <% } %>
             </div>
         </div>
+
+
+
+
+
       </div>
     </div>
   </div>

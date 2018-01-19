@@ -1,8 +1,167 @@
+@import "variables";
 
 body {
   font-family: 'Helvetica', sans-serif;
-  background-color: #F7F7F7;
+  background-color: $body-background-color;
 }
+
+// comments
+.comment-box{
+  border: solid 1px grey;
+}
+
+.commentTextArea{
+  &:hover{
+    -webkit-box-shadow: 0 20px 6px -13px rgba(0,0,0,0.15);
+        -moz-box-shadow: 0 20px 6px -13px rgba(0,0,0,0.15);
+              box-shadow: 0 20px 6px -13px rgba(0,0,0,0.15);
+  }
+}
+
+.commentMargin{
+  margin: 5px;
+}
+
+.commentDetails{
+  margin: 0 2px;
+}
+
+.commentText{
+  margin-left: 7px;
+}
+
+.commentDelete{
+  padding: 15px;
+  margin: -2px;
+}
+
+.commentInfo{
+  padding-bottom: 30px;
+}
+
+.commentButton{
+  margin: 0 auto;
+}
+
+::placeholder{
+  padding: 5px;
+}
+
+.commentTextArea{
+  height: 120px;
+  width: 98%;
+  border: none;
+}
+
+.allComments{
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px 5px;
+}
+
+.underlineComment{
+  height: 1px;
+  width: 97%;
+  background-color: #d3d3d3;
+  border-radius: 10px;
+  margin: 0px auto 10px;
+}
+
+//NAV BAR
+.navbar-dark .navbar-brand {
+  color: $orange-text-color;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a {
+  h6{
+    text-decoration: none;
+    text-transform: none;
+    color: $black-text-color;
+  }
+  h5{
+    text-decoration: none;
+    text-transform: none;
+    color: $black-text-color;
+  }
+}
+
+a {
+  &.btnFilter:hover{
+    background-color: $orange-background-color;
+    color: $white-text-color;
+  }
+}
+
+//nav bar hover
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav ul li a:hover {
+  color: #555;
+}
+
+//nav bar stroke
+nav.stroke ul li a,
+nav.fill ul li a {
+  position: relative;
+}
+
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: $orange-background-color;
+  height: 1px;
+}
+
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+//buttons
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.btnFilter {
+  margin: 2px;
+}
+
+.logginButtonPadding{
+  margin-top: 5px;
+}
+
+.myBtnContainer{
+  margin: 10px 8px;
+}
+
+.btn-sm{
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.text-center {
+  padding-top: 25px;
+}
+
+// smth
 
 .topMargin {
   margin-top: 20px;
@@ -25,6 +184,11 @@ body {
 .cardContainer{
   background-color: white;
   margin: 10px 10px 20px 10px;
+  transform: translateY(0px);
+  transition: all 0.55s ease;
+  &:hover {
+    transform: translateY(-10px);
+  }
 }
 
 .cardContent{
@@ -33,77 +197,21 @@ body {
 }
 
 
-.navbar-dark .navbar-brand {
-  color: orange;
-  font-weight: bold;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-a {
-  h6{
-    text-decoration: none;
-    text-transform: none;
-    color: black;
-  }
-  h5{
-    text-decoration: none;
-    text-transform: none;
-    color: black;
-  }
-}
-
-a {
-  &.btnFilter:hover{
-    background-color: orange;
-    color: white;
-  }
-}
-
-//nav bar hover
-nav ul li a,
-nav ul li a:after,
-nav ul li a:before {
-  transition: all .5s;
-}
-nav ul li a:hover {
-  color: #555;
-}
-
-//stroke
-nav.stroke ul li a,
-nav.fill ul li a {
-  position: relative;
-}
-
-nav.stroke ul li a:after,
-nav.fill ul li a:after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 0%;
-  content: '.';
-  color: transparent;
-  background: orange;
-  height: 1px;
-}
-
-nav.stroke ul li a:hover:after {
-  width: 100%;
-}
-
-.comment-box{
-  border: solid 1px grey;
-}
-
 .shadow {
-  -webkit-box-shadow: 0 8px 6px -9px black;
-   -moz-box-shadow: 0 8px 6px -9px black;
-        box-shadow: 0 8px 6px -9px black;
+  -webkit-box-shadow: 0 11px 6px -10px rgba(0,0,0,0.25);
+   -moz-box-shadow: 0 11px 6px -10px rgba(0,0,0,0.25);
+        box-shadow: 0 11px 6px -10px rgba(0,0,0,0.25);
+  &:hover{
+    -webkit-box-shadow: 0 20px 6px -13px rgba(0,0,0,0.15);
+        -moz-box-shadow: 0 20px 6px -13px rgba(0,0,0,0.15);
+              box-shadow: 0 20px 6px -13px rgba(0,0,0,0.15);
+  }
+}
+
+.imgShadow{
+    -webkit-box-shadow: 0 11px 6px -10px rgba(0,0,0,0.25);
+     -moz-box-shadow: 0 11px 6px -10px rgba(0,0,0,0.25);
+          box-shadow: 0 11px 6px -10px rgba(0,0,0,0.25);
 }
 
 .form-group, .alert{
@@ -128,14 +236,14 @@ nav.stroke ul li a:hover:after {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 800px;
+  height: 650px;
 }
 
 .homepageText{
   color: white;
   width: 50%;
   text-align: center;
-  text-shadow: 2px 2px #585757;
+  text-shadow: 2px 2px black;
   margin: 0 auto;
   font-size: 60px;
   padding-top: 200px;
@@ -143,26 +251,17 @@ nav.stroke ul li a:hover:after {
 }
 
 #overlay {
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.4); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  background-color: rgba(0,0,0,0.4);
+  z-index: 2;
 }
 
-.commentsContainer{
-  width: 50%;
-}
 
-.allComments{
-  background-color: white;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
-}
 
 .underline{
   border-bottom: 1px solid lightGrey;
@@ -172,16 +271,8 @@ nav.stroke ul li a:hover:after {
 .underlineTitle{
   height: 1px;
   width: 60%;
-  background-color: lightGrey;
+  background-color: $lightGrey-background-color;
   margin: 0 auto 7px;
-  border-radius: 10px;
-}
-
-.underlineComment{
-  height: 1px;
-  width: 70%;
-  background-color: lightGrey;
-  margin: 0 0 7px 7px;
   border-radius: 10px;
 }
 
@@ -192,45 +283,26 @@ nav.stroke ul li a:hover:after {
 .filterDiv {
     float: left;
     background-color: #2196F3;
-    color: #ffffff;
+    color: $white-text-color;
     width: 100px;
     line-height: 100px;
     text-align: center;
     margin: 2px;
-    display: none; /* Hidden by default */
+    display: none;
 }
 
-/* The "show" class is added to the filtered elements */
 .show {
     display: block;
 }
 
-/* Style the buttons */
-.btn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  cursor: pointer;
-}
 
-.btnFilter {
-  margin: 2px;
-}
 
-/* Add a light grey background on mouse-over */
 
-/* Add a dark background to the active button */
 a{
   &.nonActive {
     background-color: #666;
-    color: white;
+    color: $white-text-color;
   }
-}
-
-
-.btn-sm{
-  font-size: 14px;
-  padding: 2px 10px;
 }
 
 .fa-envelope, .fa-key {

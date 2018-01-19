@@ -9,7 +9,7 @@
       <input type=“text” class="form-control" value="<%= event.address %>" name="address" id="address"  required>
     </div>
     <div class="form-group">
-      <input type="date" class="form-control" name="date" id="date" required>
+      <input type="date" class="form-control" value="<%= event.date %>" name="date" id="date" required>
     </div>
     <div class="form-group">
       <input type="text" class="form-control" value="<%= event.description %>" name="description" id="description" required>
@@ -31,6 +31,7 @@
         <option>Fashion & Beauty</option>
         <option>Career and Learning</option>
         <option>Tech</option>
+        <option>Other</option>
       </select>
     </div>
     <div class="form-group">

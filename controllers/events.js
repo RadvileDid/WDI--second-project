@@ -1,6 +1,5 @@
 const Event = require('../models/event');
 const moment = require('moment');
-// const User = require('../models/user');
 
 function indexFilter(req, res, next) {
   const dictionary = {
@@ -17,7 +16,8 @@ function indexFilter(req, res, next) {
     arts: 'Arts & Crafts',
     fashion: 'Fashion & Beauty',
     career: 'Career & Learning',
-    tech: 'Tech'
+    tech: 'Tech',
+    other: 'Other'
   };
 
   Event
@@ -44,7 +44,6 @@ function eventsNew(req, res) {
 }
 
 function eventsCreate(req, res, next) {
-
   req.body.createdBy = req.user;
 
   Event
@@ -159,6 +158,7 @@ function deleteCommentRoute(req, res, next) {
 }
 
 function addAttendantsRoute(req, res, next) {
+  
   Event
     .findById(req.params.id)
     .exec()
@@ -173,7 +173,6 @@ function addAttendantsRoute(req, res, next) {
       return event.save();
     })
     .then((event) => {
-      console.log(event);
       res.redirect(`/events/${event.id}`);
     })
     .catch(next);

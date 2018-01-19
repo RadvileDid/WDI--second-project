@@ -5,7 +5,7 @@ function newRoute(req, res) {
 }
 
 function createRoute(req, res, next) {
-  console.log(req.body);
+
   User
     .findOne({ email: req.body.email })
     .exec()
@@ -16,7 +16,7 @@ function createRoute(req, res, next) {
       req.session.userId = user.id;
       req.user = user;
 
-      req.flash('success', `Welcome back, ${user.username}!`);
+      req.flash('success', `Welcome back, ${user.username}! `);
       res.redirect('/');
     })
     .catch(next);
