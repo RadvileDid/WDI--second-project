@@ -1,9 +1,18 @@
 @import "variables";
 
+
+//generic
 body {
   font-family: 'Helvetica', sans-serif;
   background-color: $body-background-color;
 }
+a{
+  &.nonActive {
+    background-color: #666;
+    color: $white-text-color;
+  }
+}
+
 
 // comments
 .comment-box{
@@ -18,12 +27,13 @@ body {
   }
 }
 
-.commentMargin{
-  margin: 5px;
-}
-
 .commentDetails{
   margin: 0 2px;
+  div {
+    p {
+      margin: 5px;
+    }
+  }
 }
 
 .commentText{
@@ -35,12 +45,12 @@ body {
   margin: -2px;
 }
 
-.commentInfo{
+.comment{
   padding-bottom: 30px;
 }
 
 .commentButton{
-  margin: 0 auto;
+  margin: $auto-margin;
 }
 
 ::placeholder{
@@ -68,6 +78,7 @@ body {
   margin: 0px auto 10px;
 }
 
+
 //NAV BAR
 .navbar-dark .navbar-brand {
   color: $orange-text-color;
@@ -75,17 +86,12 @@ body {
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: $no-text-decor;
 }
 
 a {
-  h6{
-    text-decoration: none;
-    text-transform: none;
-    color: $black-text-color;
-  }
-  h5{
-    text-decoration: none;
+  h6, h5{
+    text-decoration: $no-text-decor;
     text-transform: none;
     color: $black-text-color;
   }
@@ -132,6 +138,7 @@ nav.stroke ul li a:hover:after {
   width: 100%;
 }
 
+
 //buttons
 .btn {
   border: none;
@@ -157,23 +164,58 @@ nav.stroke ul li a:hover:after {
   padding: 5px 10px;
 }
 
-.text-center {
-  padding-top: 25px;
-}
 
-// smth
-
-.topMargin {
-  margin-top: 20px;
-}
-
-
+//image styling
 .imageSizing{
   background-position: center;
   background-size: cover;
 }
 
+.homepageImage{
+  background: url('https://knockoutmag.com/wp-content/uploads/2016/07/Boardgames.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 650px;
+}
+
+#overlay {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+
+// layout and spacing
+.form-group, .alert{
+  text-align: center;
+}
+
+.alert{
+  margin: $auto-margin;
+}
+
+.form{
+  width: 60%;
+  margin-top: 50px;
+}
+
+.text-center {
+  padding-top: 25px;
+}
+
+.topMargin {
+  margin-top: 20px;
+}
+
 .container {
+  overflow: hidden;
   .row {
     .col-5{
       padding: 0;
@@ -181,6 +223,32 @@ nav.stroke ul li a:hover:after {
   }
 }
 
+.cardContent{
+  padding: 20px 0;
+  text-align: center;
+}
+
+.filterDiv {
+  float: left;
+  background-color: #2196F3;
+  color: $white-text-color;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.fa-envelope, .fa-key {
+  margin-top: 10px;
+}
+
+
+//shadows and effects
 .cardContainer{
   background-color: white;
   margin: 10px 10px 20px 10px;
@@ -190,12 +258,6 @@ nav.stroke ul li a:hover:after {
     transform: translateY(-10px);
   }
 }
-
-.cardContent{
-  padding: 20px 0;
-  text-align: center;
-}
-
 
 .shadow {
   -webkit-box-shadow: 0 11px 6px -10px rgba(0,0,0,0.25);
@@ -214,55 +276,21 @@ nav.stroke ul li a:hover:after {
           box-shadow: 0 11px 6px -10px rgba(0,0,0,0.25);
 }
 
-.form-group, .alert{
-  text-align: center;
-}
 
-.alert{
-  margin: 0;
-}
-
-.formWidth{
-  width: 60%;
-}
-
-.formMargin{
-  margin-top: 50px;
-}
-
-.homepageImage{
-  background: url('https://knockoutmag.com/wp-content/uploads/2016/07/Boardgames.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 650px;
-}
-
+//text
 .homepageText{
   color: white;
   width: 50%;
   text-align: center;
   text-shadow: 2px 2px black;
-  margin: 0 auto;
+  margin: $auto-margin;
   font-size: 60px;
   padding-top: 200px;
   font-family: 'Kaushan Script', cursive;
 }
 
-#overlay {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.4);
-  z-index: 2;
-}
 
-
-
+//strokes
 .underline{
   border-bottom: 1px solid lightGrey;
   font-weight: bold;
@@ -274,37 +302,4 @@ nav.stroke ul li a:hover:after {
   background-color: $lightGrey-background-color;
   margin: 0 auto 7px;
   border-radius: 10px;
-}
-
-.container {
-    overflow: hidden;
-}
-
-.filterDiv {
-    float: left;
-    background-color: #2196F3;
-    color: $white-text-color;
-    width: 100px;
-    line-height: 100px;
-    text-align: center;
-    margin: 2px;
-    display: none;
-}
-
-.show {
-    display: block;
-}
-
-
-
-
-a{
-  &.nonActive {
-    background-color: #666;
-    color: $white-text-color;
-  }
-}
-
-.fa-envelope, .fa-key {
-  margin-top: 10px;
 }
