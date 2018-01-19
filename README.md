@@ -12,7 +12,8 @@ what i would like to add if I had more time
 
 link to heroku, github
 
-
 screenshots from wireframes
 
 list libraries, packages used
+
+##
