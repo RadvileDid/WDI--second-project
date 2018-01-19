@@ -1,9 +1,8 @@
 const mongoose   = require('mongoose');
 mongoose.Promise = require('bluebird');
-const { env } = require('../config/environment');
+const { dbURI } = require('../config/environment');
 
-const databaseURL = `mongodb://localhost/project-2-${env}`;
-mongoose.connect(databaseURL);
+mongoose.connect(dbURI);
 
 const Event = require('../models/event');
 const User = require('../models/user');
