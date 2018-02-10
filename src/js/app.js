@@ -3,9 +3,7 @@
 console.log('JS loaded');
 
 function initAutocomplete() {
-  autocomplete = new google.maps.places.Autocomplete(
-    /** @type {!HTMLInputElement} */(document.getElementById('address')),
-    {types: ['geocode']});
+  const autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'));
 
   autocomplete.addListener('place_changed', fillInAddress);
 }
