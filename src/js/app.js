@@ -1,15 +1,20 @@
 // client side js here
 //google autocomplete API below
-console.log('JS loaded');
 
-function initAutocomplete() {
-  const autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'));
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('JS loaded');
+  const address = document.getElementById('address');
+  console.log(address);
 
-  autocomplete.addListener('place_changed', fillInAddress);
-}
+  function initAutocomplete() {
+    const autocomplete = new google.maps.places.Autocomplete(address);
 
-function fillInAddress() {
-  var place = autocomplete.getPlace();
-}
+    autocomplete.addListener('place_changed', fillInAddress);
+  }
 
-module.exports = initAutocomplete();
+  function fillInAddress() {
+    const place = autocomplete.getPlace();
+  }
+
+  if (address) initAutocomplete();
+});
