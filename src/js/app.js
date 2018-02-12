@@ -4,7 +4,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('JS loaded');
   const address = document.getElementById('address');
-  console.log(address);
 
   function initAutocomplete() {
     const autocomplete = new google.maps.places.Autocomplete(address);
