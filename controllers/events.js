@@ -158,7 +158,7 @@ function deleteCommentRoute(req, res, next) {
 }
 
 function addAttendantsRoute(req, res, next) {
-  
+
   Event
     .findById(req.params.id)
     .exec()
