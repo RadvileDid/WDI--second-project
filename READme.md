@@ -59,8 +59,6 @@ Events website where you can register/login and see events. Logged in user can a
 
 
 ##Visit game
-View on Heroku or Github.
-
 View on [Heroku](http://letsketchup.herokuapp.com/) or [Github](https://github.com/RadvileDid/WDI--second-project).
 ##Process
 
